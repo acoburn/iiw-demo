@@ -14,7 +14,10 @@ navigator.credentials.get({
         }
       ]
     }
-}).then(credential => console.log(credential));
+}).then(credential => {
+  console.log("Got Credential");
+  console.log(credential);
+});
 
     </script>
   </head>
