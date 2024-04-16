@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FedCM Demo</title>
+    <script>
+navigator.credentials.get({
+    identity: {
+      context: "signin",
+      providers: [
+        {
+          configURL: "https://fedcm.dev.inrupt.com/fedcm.json",
+          clientId: "https://solid-contrib.github.io/solid-oidc-tests/data/tester.jsonld",
+          nonce: "blah"
+        }
+      ]
+    }
+}).then(credential => console.log(credential));
+
+    </script>
+  </head>
+  <body>
+    <p>Demo</p>
+  </body>
+</html>
+
