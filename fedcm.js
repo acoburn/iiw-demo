@@ -16,6 +16,6 @@ import { JOSE } from './authentication.js';
   }).then(credential => {
     const token = credential.token;
     const jwt = JOSE.parse(token);
-    console.log(jwt.body());
+    console.log(jwt.body);
   });
 })();
