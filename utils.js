@@ -1,3 +1,5 @@
+import { DPoP } from './authentication.js';
+
 export class Utils {
   static nonce() {
     const rand = new Uint32Array(1);

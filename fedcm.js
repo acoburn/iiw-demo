@@ -1,4 +1,4 @@
-import { JOSE, DPoP } from './authentication.js';
+import { JOSE } from './authentication.js';
 import { Utils } from './utils.js';
 
 
