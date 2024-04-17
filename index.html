@@ -18,6 +18,8 @@ navigator.credentials.get({
 }).then(credential => {
   const token = credential.token;
   console.log(token);
+  fetch("https://fedcm.dev.inrupt.com/userinfo", { headers: { "Authorization": token }})
+    .then(res => console.log(res.json()));
 });
 
     </script>
