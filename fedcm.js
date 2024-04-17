@@ -1,4 +1,4 @@
-import { JOSE } from './authentication.js';
+import { JOSE, DPoP } from './authentication.js';
 
 function list(token) {
     return fetch("https://provision.inrupt.com/list", {
@@ -9,6 +9,11 @@ function list(token) {
 }
 
 (() => {
+
+  const rand = new Uint32Array(1);
+  crypto.getRandomValues(rand);
+  console.log(DPoP.stringToBase64(rand));
+
   navigator.credentials.get({
       identity: {
         context: "signin",
@@ -16,7 +21,7 @@ function list(token) {
           {
             configURL: "https://fedcm.dev.inrupt.com/fedcm.json",
             clientId: "https://acoburn.github.io/iiw-demo/client.json",
-            nonce: "not-a-nonce"
+            nonce: DPoP.stringToBase64(rand)
           }
         ]
       }
@@ -28,8 +33,10 @@ function list(token) {
 
     list(token)
       .then(storages => {
-        document.getElementById("storages").innerHTML =
-          `<ul>${storages.map(path => "<li>https://storage.inrupt.com" + path + "</li>").join()}</ul>`;
+        if (storages.length > 0) {
+          document.getElementById("storages").innerHTML =
+            `<p>Solid Pods</p><ul>${storages.map(path => "<li>https://storage.inrupt.com" + path + "</li>").join()}</ul>`;
+        }
       });
     document.getElementById("provision").addEventListener("click", () => {
       fetch("https://provision.inrupt.com/", {
@@ -40,7 +47,7 @@ function list(token) {
       .then(res => list(token))
       .then(storages => {
         document.getElementById("storages").innerHTML =
-          `<ul>${storages.map(path => "<li>https://storage.inrupt.com" + path + "</li>").join()}</ul>`;
+          `<p>Solid Pods</p><ul>${storages.map(path => "<li>https://storage.inrupt.com" + path + "</li>").join()}</ul>`;
       });
     });
   });
