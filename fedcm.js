@@ -24,7 +24,8 @@ function list(token) {
             nonce: DPoP.stringToBase64(rand)
           }
         ]
-      }
+      },
+      mediation: "silent"
   }).then(credential => {
     const token = credential.token;
     const jwt = JOSE.parse(token);
