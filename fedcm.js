@@ -16,6 +16,6 @@ import { JOSE } from './authentication.js';
   }).then(credential => {
     const token = credential.token;
     const jwt = JOSE.parse(token);
-    console.log(jwt.body);
+    document.getElementById("webid").innerHTML = "WebID: <code>jwt.body.webid</code>";
   });
 })();
