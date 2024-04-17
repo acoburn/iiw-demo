@@ -15,7 +15,7 @@ import { Utils } from './utils.js';
           }
         ]
       },
-      mediation: "optional"
+      mediation: "silent"
   }).then(credential => {
     const token = credential.token;
     const jwt = JOSE.parse(token);
