@@ -2,7 +2,7 @@ export class Utils {
   static nonce() {
     const rand = new Uint32Array(1);
     crypto.getRandomValues(rand);
-    return btoa(str).replace(/=+$/, '');
+    return btoa(rand).replace(/=+$/, '');
   }
 
   static async list(token) {
