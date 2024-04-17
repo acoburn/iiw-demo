@@ -1,4 +1,4 @@
-import { JOSE } from './authentication.js';
+import { JOSE } from './jose.js';
 import { Utils } from './utils.js';
 
 

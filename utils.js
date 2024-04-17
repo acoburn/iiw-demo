@@ -1,10 +1,8 @@
-import { DPoP } from './authentication.js';
-
 export class Utils {
   static nonce() {
     const rand = new Uint32Array(1);
     crypto.getRandomValues(rand);
-    return DPoP.stringToBase64(rand);
+    return btoa(str).replace(/=+$/, '');
   }
 
   static async list(token) {
