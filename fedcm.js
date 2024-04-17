@@ -17,5 +17,13 @@ import { JOSE } from './authentication.js';
     const token = credential.token;
     const jwt = JOSE.parse(token);
     document.getElementById("webid").innerHTML = `WebID: <code>${jwt.body.webid}</code>`;
+    document.getElementById("provision").disabled = false;
+    fetch("https://provision.inrupt.com/list", {
+      headers: {
+        "Authorization": "Bearer " + token
+      }})
+      .then(res => {
+        console.log(res.json());
+      });
   });
 })();
