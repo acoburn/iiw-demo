@@ -35,7 +35,7 @@ function list(token) {
       fetch("https://provision.inrupt.com/", {
         method: "POST",
         headers: {
-          "Authorization": "Bearer " + token"
+          "Authorization": "Bearer " + token
         }})
       .then(res => list(token))
       .then(storages => {
