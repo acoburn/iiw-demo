@@ -1,3 +1,6 @@
+import { JOSE } from './authentication.js';
+
+
 (() => {
   navigator.credentials.get({
       identity: {
@@ -12,6 +15,7 @@
       }
   }).then(credential => {
     const token = credential.token;
-    console.log(token);
+    jwt = JOSE.parse(token);
+    console.log(jwt.body());
   });
 })();
