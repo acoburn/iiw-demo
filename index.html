@@ -16,13 +16,14 @@ navigator.credentials.get({
       ]
     }
 }).then(credential => {
-  console.log(credential);
+  const token = credential.token;
+  console.log(token);
 });
 
     </script>
   </head>
   <body>
-    <p>Demo</p>
+    <p>FedCM Demo</p>
   </body>
 </html>
 
