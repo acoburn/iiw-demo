@@ -2,27 +2,8 @@
 <html>
   <head>
     <title>FedCM Demo</title>
-    <script>
-
-navigator.credentials.get({
-    identity: {
-      context: "signin",
-      providers: [
-        {
-          configURL: "https://fedcm.dev.inrupt.com/fedcm.json",
-          clientId: "https://acoburn.github.io/iiw-demo/client.json",
-          nonce: "not-a-nonce"
-        }
-      ]
-    }
-}).then(credential => {
-  const token = credential.token;
-  console.log(token);
-  fetch("https://fedcm.dev.inrupt.com/userinfo", { headers: { "Authorization": "Bearer " + token }})
-    .then(res => console.log(res.json()));
-});
-
-    </script>
+    <script type="module" src="authentication.js"></script>
+    <script type="module" src="fedcm.js"></script>
   </head>
   <body>
     <p>FedCM Demo</p>
