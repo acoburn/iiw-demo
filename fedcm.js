@@ -14,8 +14,7 @@ import { Utils } from './utils.js';
             nonce: Utils.nonce()
           }
         ]
-      },
-      mediation: "silent"
+      }
   }).then(credential => {
     const token = credential.token;
     const jwt = JOSE.parse(token);
@@ -36,4 +35,5 @@ import { Utils } from './utils.js';
       .then(storages => Utils.format("storages", storages));
     });
   });
+
 })();
