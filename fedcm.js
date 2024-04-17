@@ -25,7 +25,7 @@ function list(token) {
           }
         ]
       },
-      mediation: "silent"
+      mediation: "optional"
   }).then(credential => {
     const token = credential.token;
     const jwt = JOSE.parse(token);
